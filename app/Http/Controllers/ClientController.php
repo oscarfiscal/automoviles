@@ -8,6 +8,8 @@ use App\Repository\ClientRepository;
 use App\services\ApiColombiaDepartmentService;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Contracts\View\View;
+use App\Exports\ClientExport;
+use Maatwebsite\Excel\Facades\Excel;
 
 class ClientController extends Controller
 {
@@ -44,6 +46,11 @@ class ClientController extends Controller
     {
         $this->client->create($request->all());
         return redirect()->route('home');
+    }
+
+    public function exportClient()
+    {
+        return Excel::download(new ClientExport, 'client.xlsx');
     }
 
 

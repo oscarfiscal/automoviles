@@ -21,9 +21,17 @@
                             <path d="M7.5 1a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13zM8 7V4h1v3h3v1H9v3H8V8H5V7h3z" />
                         </svg>
                     </a>
-                    <p>
-                        <button onclick="objective(event, {{$clientWin}})" class="btn btn-primary py-3 px-4" @if(count($clients) < 5) disabled @endif>Revelar ganador</button>
-                    </p>
+                    <div class="flex items-center">
+                        <p class="mr-4">
+                            <button onclick="objective(event, {{$clientWin}})"  class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded @if(count($clients) < 5) opacity-50 cursor-not-allowed @endif" @if(count($clients) < 5) disabled @endif>Revelar ganador</button>
+                        </p>
+                        <p>
+                            <a href="{{route('clients.excel')}}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Exportar Archivo</a>
+                        </p>
+                    </div>
+
+
+
                     <table class="table table-dark table-bordered table-hover">
                         <thead>
                         <tr>
