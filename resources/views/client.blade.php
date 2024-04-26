@@ -34,20 +34,31 @@
                             <p class="text-red-500 text-xs italic mt-1">{{ $errors->first('identification') }}</p>
                         @endif
                     </div>
+                    <!-- Departamento -->
                     <div class="grid grid-cols-1">
                         <label class="uppercase md:text-sm text-xs text-gray-500 text-light font-semibold">Departamento:</label>
-                        <input name="departament" class="py-2 px-3 rounded-lg border-2 border-purple-300 mt-1 focus:outline-none focus:ring-2 focus:ring-purple-600 "  type="text" />
+                        <select name="departament" id="departament" class="py-2 px-3 rounded-lg border-2 border-purple-300 mt-1 focus:outline-none focus:ring-2 focus:ring-purple-600 ">
+                            <option value="">Seleccionar Departamento</option>
+                            @foreach ($departments as $department)
+                                <option value="{{ $department['name'] }}" data-id="{{ $department['id'] }}">{{ $department['name'] }}</option>
+                            @endforeach
+                        </select>
                         @if ($errors->has('departament'))
                             <p class="text-red-500 text-xs italic mt-1">{{ $errors->first('departament') }}</p>
                         @endif
                     </div>
+
+                    <!-- Ciudad -->
                     <div class="grid grid-cols-1">
                         <label class="uppercase md:text-sm text-xs text-gray-500 text-light font-semibold">Ciudad:</label>
-                        <input name="city" class="py-2 px-3 rounded-lg border-2 border-purple-300 mt-1 focus:outline-none focus:ring-2 focus:ring-purple-600 " type="text" />
+                        <select name="city" id="city" class="py-2 px-3 rounded-lg border-2 border-purple-300 mt-1 focus:outline-none focus:ring-2 focus:ring-purple-600 ">
+                            <option value="">Seleccionar Ciudad</option>
+                        </select>
                         @if ($errors->has('city'))
                             <p class="text-red-500 text-xs italic mt-1">{{ $errors->first('city') }}</p>
                         @endif
                     </div>
+
                     <div class="grid grid-cols-1">
                         <label class="uppercase md:text-sm text-xs text-gray-500 text-light font-semibold">Celular:</label>
                         <input name="phone" value="{{ old('phone') }}" class="py-2 px-3 rounded-lg border-2 border-purple-300 mt-1 focus:outline-none focus:ring-2 focus:ring-purple-600 " type="number" />
@@ -85,3 +96,20 @@
 </div>
 </body>
 </html>
+<script>
+    document.getElementById('departament').addEventListener('change', function() {
+        const departmentId = this.options[this.selectedIndex].getAttribute('data-id');
+        fetch(` https://api-colombia.com/api/v1/Department/${departmentId}/cities`)
+            .then(response => response.json())
+            .then(data => {
+                const citySelect = document.getElementById('city');
+                citySelect.innerHTML = '<option value="">Seleccionar Ciudad</option>';
+                data.forEach(city => {
+                    const option = document.createElement('option');
+                    option.value = city.name;
+                    option.textContent = city.name;
+                    citySelect.appendChild(option);
+                });
+            });
+    });
+</script>
