@@ -1,66 +1,70 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Landing Page para Promoción de Automóviles 🚀
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Este proyecto es una Landing Page para una promoción de una compañía importante de automóviles, diseñada para la recolección de datos de clientes actuales de la marca en Bogotá. El concurso consiste en que el usuario se registre en la Landing Page y, posteriormente, se seleccione un ganador al azar entre al menos 5 usuarios registrados.
+## Funcionalidades 📋
+Registro de usuarios con los siguientes campos:<br>
+Nombre <br>
+Apellido<br>
+Cédula<br>
+Departamento<br>
+Ciudad (dependiente del departamento elegido)<br>
+Celular<br>
+Correo Electrónico<br>
+Habeas Data (consentimiento para el tratamiento de datos)<br>
+Selección aleatoria de un ganador entre al menos 5 usuarios registrados.<br>
+Descarga de un archivo Excel con la información de los registros de clientes.
 
-## About Laravel
+## Observaciones 📋
+En este proyecto, se optó por no utilizar tablas y relaciones para almacenar los datos de departamentos y ciudades directamente en la base de datos. En su lugar, se integraron APIs externas para obtener esta información dinámicamente.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## APIs Utilizadas
+https://api-colombia.com/api/v1/Department
+https://api-colombia.com/api/v1/Department/{id}/cities
+## Instalación 🔧
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+1. Clona el repositorio desde GitHub:
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+    ```bash
+    git clone https://github.com/oscarfiscal/automoviles.git
+    ```
+## 2. Instala las dependencias de Composer:
 
-## Learning Laravel
+```bash
+ cd automoviles
+```
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+```bash
+  composer install
+```
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+## 3. Copia el archivo .env.example
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+```bash
+cp .env.example .env
+```
 
-## Laravel Sponsors
+## 4. Genera la clave de la aplicación:
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+```bash
+php artisan key:generate
+```
 
-### Premium Partners
+## 5. Ejecuta las migraciones para crear las tablas necesarias en la base de datos::
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+```bash
+php artisan migrate
+```
 
-## Contributing
+## 5. Inicia el servidor de desarrollo: 🚀
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+```bash
+php artisan serve
+```
 
-## Code of Conduct
+## 6.Visita http://localhost:8000 en tu navegador para acceder al sistema
+    
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
 
-## Security Vulnerabilities
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
 
-## License
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).

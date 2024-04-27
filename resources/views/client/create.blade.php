@@ -10,7 +10,7 @@
 <div class="py-12">
     <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
         <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg p-6">
-            <h1 class="text-2xl font-semibold mb-4">Crear Cliente</h1>
+            <h1 class="text-2xl font-semibold mb-4">Registrate y Gana</h1>
             <form action="{{ route('client-create') }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-8 mt-5 mx-7">
